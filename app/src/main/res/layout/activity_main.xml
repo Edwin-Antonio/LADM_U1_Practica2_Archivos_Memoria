@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:background="@drawable/fondo11"
+    tools:context=".MainActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Posts"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Escriba una frase:"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:paddingBottom="10dp"/>
+
+            <EditText
+                android:id="@+id/et_frase"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:paddingBottom="20dp"
+                android:textColor="@color/white"
+                android:textColorHint="#C6FFFFFF"
+                android:hint="Frase"/>
+
+            <RadioGroup
+                android:id="@+id/radiogroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp">
+
+                <RadioButton
+                    android:id="@+id/rbtn_interna"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Archivar en memoria INTERNA"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/rbtn_externa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Archivar en memoria SD"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre del archivo:"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:paddingTop="25dp"/>
+
+            <EditText
+                android:id="@+id/et_nombreArchivo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:paddingTop="15dp"
+                android:textColorHint="#DFFFFFFF"
+                android:hint="Nombre del archivo"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="30dp">
+
+                <Button
+                    android:id="@+id/btn_guardar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Guardar"
+                    android:layout_margin="25dp"
+                    android:backgroundTint="#CA1818"/>
+
+                <Button
+                    android:id="@+id/btn_abrir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ABRIR"
+                    android:layout_margin="25dp"
+                    android:backgroundTint="#CAB818"/>
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/btn_nuevo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="+"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:text="Frase seleccionada:"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/et_posts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
