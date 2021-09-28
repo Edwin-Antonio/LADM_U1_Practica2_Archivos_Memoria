@@ -91,8 +91,6 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-
-
         btn_nuevo.setOnClickListener {
             cleanTexts() // Funcion propia creada hasta la parte de abajo, checar ahí la funcion
             et_frase.requestFocus()
@@ -103,8 +101,20 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    // ------------------------- Funciones Creadas -------------------------------
+    
+    //
+    // IMPORTANTE EL ANEXAR EN EL ARCHIVO LLAMADO "AndroidManifest.xml" DE ESTE PROYECTO QUE SE ENCUENTRA EN LA CARPETA "manifest" LAS
+    // LINEAS DE CODIGO PARA LECTURA Y ESCRITURA EN UNA SD, LAS LINEAS DE CODIGO SON:
+    //
+    // <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    // <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    //
+    // De nada Edwin del Futuro
+
     private fun abrirEnMemoriaExterna() {
         try {
+
             //INFORMACION SI LA SD SE ENCUENTRA MONTADA
             if(Environment.getExternalStorageState() != Environment.MEDIA_MOUNTED){
                 AlertDialog.Builder(this)
@@ -114,12 +124,13 @@ class MainActivity : AppCompatActivity() {
                 return
             }
 
-            var rutaSD = getExternalFilesDir(null)!!.absolutePath
-            var archivoSD = File(rutaSD,"${et_nombreArchivo.text.toString()}.txt")
-            var flujoEntrada = BufferedReader(InputStreamReader(FileInputStream(archivoSD)))
+            //ENRUTAMIENTO A LA MEMORIA SD PARA CREAR EL ARCHIVO
+            var rutaSD = getExternalFilesDir(null)!!.absolutePath  //Indicamos que obtendremos un archivo externo al telefono
+            var archivoSD = File(rutaSD,"${et_nombreArchivo.text.toString()}.txt") // Indicamos el nombre del archivo de texto que vamos a leer de la SD
+            var flujoEntrada = BufferedReader(InputStreamReader(FileInputStream(archivoSD))) //Leemos el archivo
 
-            et_posts.setText(flujoEntrada.readText())
-            AlertDialog.Builder(this)
+            et_posts.setText(flujoEntrada.readText()) //Insertamos en el Edit Text llamado "et_posts" lo que tiene el archivo
+            AlertDialog.Builder(this) // Mensaje de dialogo sobre el exito de la lectura
                 .setTitle("Resultado")
                 .setMessage("Lectura con éxito")
                 .setPositiveButton("ok"){
@@ -144,9 +155,9 @@ class MainActivity : AppCompatActivity() {
             }
 
             //ENRUTAMIENTO A LA MEMORIA SD PARA CREAR EL ARCHIVO
-            var rutaSD = getExternalFilesDir(null)!!.absolutePath
-            var archivoEnSD = File(rutaSD, "${et_nombreArchivo.text.toString()}.txt")
-            var flujoSalida = OutputStreamWriter(FileOutputStream(archivoEnSD))
+            var rutaSD = getExternalFilesDir(null)!!.absolutePath //Indicamos que obtendremos un archivo externo al telefono
+            var archivoEnSD = File(rutaSD, "${et_nombreArchivo.text.toString()}.txt") // Indicamos el nombre del archivo de texto que vamos a leer de la SD
+            var flujoSalida = OutputStreamWriter(FileOutputStream(archivoEnSD)) //Leemos el archivo
 
             flujoSalida.write(et_frase.text.toString())
             flujoSalida.flush()
